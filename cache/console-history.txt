@@ -1,0 +1,1006 @@
+);
+    durationInSeconds
+    rewardAmount,
+    taskDetails,
+const createTx = await contracts.escrow.postTask(
+}
+    throw new Error("durationInSeconds must be positive");
+if (durationInSeconds <= 0) {
+}
+    throw new Error("durationInSeconds is not defined");
+if (durationInSeconds === undefined || durationInSeconds === null) {
+// Check if it's defined and valid
+console.log("durationInSeconds type:", typeof durationInSeconds);
+console.log("durationInSeconds:", durationInSeconds);
+console.log("rewardAmount:", rewardAmount);
+console.log("taskDetails:", taskDetails);
+}
+    throw new Error("Duration must be positive");
+if (duration <= 0) {
+// Ensure it's a positive number
+console.log("Duration type:", typeof duration);
+console.log("Duration value:", duration);
+// Make sure duration is valid
+console.log("Is fixed task expired?", Date.now() > Number(latestFixedTask[3]));
+console.log("Fixed task deadline:", new Date(Number(latestFixedTask[3])));
+const latestFixedTask = await escrow.getTask(Number(latestCounter) - 1);
+const latestCounter = await escrow.taskCounter();
+console.log("✅ 7-day task created with workaround");
+await fixedTask.wait();
+);
+  sevenDayMilliseconds
+  ethers.parseUnits("2.0", 6), 
+  "Console Test - 7 Days Fixed", 
+const fixedTask = await escrow.postTask(
+console.log("7 days in milliseconds:", sevenDayMilliseconds);
+console.log("7 days in seconds:", sevenDaySeconds);
+const sevenDayMilliseconds = sevenDaySeconds * 1000;
+const sevenDaySeconds = 7 * 24 * 60 * 60;
+// Use new variable names
+await workaroundTask.wait();
+);
+  durationInMilliseconds
+  ethers.parseUnits("2.0", 6), 
+  "Console Test - 7 Days Fixed", 
+const workaroundTask = await escrow.postTask(
+const durationInMilliseconds = durationInSeconds * 1000;
+const durationInSeconds = 7 * 24 * 60 * 60;
+console.log("Is workaround task expired?", Date.now() > Number(workaroundTaskData[3]));
+console.log("Should be 7 days from now:", new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
+console.log("Workaround task deadline:", new Date(Number(workaroundTaskData[3])));
+const workaroundTaskData = await escrow.getTask(Number(finalCounter) - 1);
+const finalCounter = await escrow.taskCounter();
+console.log("✅ Workaround task created");
+await workaroundTask.wait();
+);
+  durationInMilliseconds  // Send milliseconds!
+  ethers.parseUnits("3.0", 6), 
+  "Workaround Test - 7 Days", 
+const workaroundTask = await escrow.postTask(
+// Create task with milliseconds (the workaround)
+console.log("Duration in milliseconds:", durationInMilliseconds);
+console.log("Duration in seconds:", durationInSeconds);
+const durationInMilliseconds = durationInSeconds * 1000; // Convert to milliseconds
+const durationInSeconds = 7 * 24 * 60 * 60; // 7 days in seconds
+// Test the workaround - send milliseconds instead of seconds
+console.log("Task deadline (raw):", newestTask[3].toString());
+console.log("30 days in milliseconds:", veryLongDuration * 1000);
+console.log("30 days in seconds:", veryLongDuration);
+console.log("Difference:", Math.floor((Date.now() / 1000) - currentBlock.timestamp), "seconds");
+console.log("Our current time:", new Date());
+console.log("Contract block time:", new Date(currentBlock.timestamp * 1000));
+const currentBlock = await ethers.provider.getBlock('latest');
+// Check what the contract thinks "now" is
+console.log("Should be 30 days from now:", new Date(Date.now() + 30 * 24 * 60 * 60 * 1000));
+console.log("30-day task deadline:", new Date(Number(newestTask[3])));
+const newestTask = await escrow.getTask(Number(newestCounter) - 1);
+const newestCounter = await escrow.taskCounter();
+// Check the new task immediately
+console.log("✅ 30-day task created");
+await testLongTask.wait();
+);
+  veryLongDuration
+  ethers.parseUnits("1.0", 6), 
+  "30 Day Test Task", 
+const testLongTask = await escrow.postTask(
+const veryLongDuration = 30 * 24 * 60 * 60; // 30 days in seconds
+console.log("Is latest task expired?", Date.now() > Number(latestTask[3]));
+console.log("Latest task deadline:", new Date(Number(latestTask[3])));
+console.log("Latest task title:", latestTask[1]);
+const latestTask = await escrow.getTask(latestId);
+const latestId = Number(currentTaskCounter) - 1;
+console.log("Task counter:", currentTaskCounter.toString());
+const currentTaskCounter = await escrow.taskCounter();
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+console.log("Is new task expired?", Date.now() > Number(newTask[3]));
+console.log("Current time:", new Date());
+console.log("New task deadline (date):", new Date(Number(newTask[3])));
+console.log("New task deadline (raw):", newTask[3].toString());
+console.log("New task title:", newTask[1]);
+const newTask = await escrow.getTask(latestTaskId);
+const latestTaskId = Number(newTaskCounter) - 1;
+console.log("New task counter:", newTaskCounter.toString());
+const newTaskCounter = await escrow.taskCounter();
+// Check the new task
+console.log("✅ Task created with proper deadline");
+await testTaskTx.wait();
+);
+  7 * 24 * 60 * 60  // 7 days in seconds
+  ethers.parseUnits("5.0", 6), 
+  "Console Task with Future Deadline", 
+const testTaskTx = await escrow.postTask(
+const futureTime = Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60); // 7 days from now in SECONDS
+// In Hardhat console - create a task with a proper future deadline
+console.log("Task 7 expired?", Date.now() > Number(task6Current[6]));
+console.log("Task 7 expired?", Date.now() > Number(task7Current[6]));
+console.log("Task 7 expired?", Date.now() > Number(task7Current[7]));
+console.log("Task 5 expired?", Date.now() > Number(task5Current[3]));
+console.log("Task 6 expired?", Date.now() > Number(task6Current[3]));
+console.log("Task 8 expired?", Date.now() > Number(task8Current[3]));
+console.log("Task 7 expired?", Date.now() > Number(task7Current[3]));
+console.log("Task 6 expired?", Date.now() > Number(task6Current[3]));
+console.log("Current time:", new Date());
+console.log("Task 7 deadline:", new Date(Number(task7Current[3])));
+console.log("Task 6 deadline:", new Date(Number(task6Current[3])));
+const task7Current = await escrow.getTask(7);
+const task6Current = await escrow.getTask(6);
+// Check the current task deadlines for tasks 6 and 7
+console.log("Task 7 expired?", Date.now() > Number(task7Current[3]));
+console.log("Task 6 expired?", Date.now() > Number(task6Current[3]));
+console.log("Current time:", new Date());
+console.log("Task 7 deadline:", new Date(Number(task7Current[3])));
+console.log("Task 6 deadline:", new Date(Number(task6Current[3])));
+const task7Current = await escrow.getTask(7);
+const task6Current = await escrow.getTask(6);
+// Check the current task deadlines for tasks 6 and 7
+console.log("Task 6 expired?", Date.now() > Number(task6[3]));
+console.log("Task 5 expired?", Date.now() > Number(task5[3]));
+// Check if expired with millisecond comparison
+console.log("Current time (readable):", new Date(Date.now()));
+console.log("Current time (ms):", Date.now());
+// Check current time in milliseconds
+console.log("Task 6 deadline (as ms):", new Date(Number(task6[3])));
+console.log("Task 5 deadline (as ms):", new Date(Number(task5[3])));
+// Check if treating as milliseconds gives correct dates
+console.log("Task 6 expired?", now > Number(task6[3]) / 1000);
+console.log("Task 5 expired?", now > Number(task5[3]) / 1000);
+// Check if actually expired
+console.log("Current time:", new Date(now * 1000));
+const now = Math.floor(Date.now() / 1000);
+// Check current time
+console.log("Task 6 deadline:", new Date(Number(task6[3]) / 1000));
+console.log("Task 5 deadline:", new Date(Number(task5[3]) / 1000));
+// Convert to readable dates
+console.log("Task 6 raw deadline:", task6[3].toString());
+console.log("Task 5 raw deadline:", task5[3].toString());
+const task6 = await escrow.getTask(6);
+const task5 = await escrow.getTask(5);
+// Check the raw deadline values for your new tasks
+console.log("Task 2:", taskTwo[1], "-", ethers.formatUnits(taskTwo[2], 6), "USDT");
+const taskTwo = await escrow.getTask(2);
+// Check task 2
+console.log("Task 1:", taskOne[1], "-", ethers.formatUnits(taskOne[2], 6), "USDT");
+const taskOne = await escrow.getTask(1);
+// Check task 1  
+console.log("Task 0:", taskZero[1], "-", ethers.formatUnits(taskZero[2], 6), "USDT");
+const taskZero = await escrow.getTask(0);
+// Check task 0
+console.log("Task counter:", currentCounter.toString());
+const currentCounter = await escrow.taskCounter();
+// Check all existing tasks with new variable names
+}
+  }
+    console.log(`Task ${i}: Not found`);
+  } catch (e) {
+    console.log(`Task ${i}: "${task[1]}" - ${ethers.formatUnits(task[2], 6)} USDT`);
+    const task = await escrow.getTask(i);
+  try {
+for (let i = 0; i < 6; i++) {
+// In Hardhat console - check all your tasks
+console.log("Latest task reward:", ethers.formatUnits(latestTask[2], 6));
+console.log("Latest task title:", latestTask[1]);
+const latestTask = await escrow.getTask(latestTaskId);
+const latestTaskId = Number(taskCounter) - 1; // Since counter is total count
+// Check your latest task
+console.log("Current task counter:", taskCounter.toString());
+const taskCounter = await escrow.taskCounter();
+console.log("Within limit?", duration <= Number(maxDuration));
+console.log("Your console test duration:", (duration / (24 * 60 * 60)).toFixed(1), "days");
+console.log("Your console test duration:", duration, "seconds");
+console.log("Max task duration:", (Number(maxDuration) / (24 * 60 * 60)).toFixed(1), "days");
+console.log("Max task duration:", maxDuration.toString(), "seconds");
+const maxDuration = await escrow.MAX_TASK_DURATION();
+// === CHECK THE MAX TASK DURATION ===
+console.log("Status:", task4[7].toString());
+console.log("Creator:", task4[4]);
+console.log("Deadline:", new Date(Number(task4[3]) / 1000));
+console.log("Reward:", ethers.formatUnits(task4[2], 6));
+console.log("Title/Details:", task4[1]);
+console.log("Task 4 details:");
+const task4 = await escrow.getTask(4); // Since counter went from 3 to 5, task 4 should exist
+// === CHECK THE NEW TASK THAT WAS JUST CREATED ===
+console.log("Final task counter:", finalTaskCounter.toString());
+const finalTaskCounter = await escrow.taskCounter();
+// === CHECK THE NEW TASK ===
+console.log("✅ Task created successfully!");
+await newPostTx.wait();
+console.log("✅ Task posted TX:", newPostTx.hash);
+const newPostTx = await escrow.postTask(details, reward, duration);
+console.log("Duration:", duration);
+console.log("Reward:", reward.toString());
+console.log("Details:", details);
+console.log("Parameters:");
+const duration = 7 * 24 * 60 * 60; // 7 days in seconds
+const reward = ethers.parseUnits("2.0", 6);
+const details = "Console Test Task - Testing the postTask function";
+// === TRY POSTTASK WITH NEW VARIABLES ===
+const postTaskTx = await escrow.postTask(taskDetails, taskReward, taskDuration);
+const taskDuration = 7 * 24 * 60 * 60; // 7 days in seconds
+const taskReward = ethers.parseUnits("2.0", 6);
+const taskDetails = "Test Task from Console - This is a test task created via console";
+// === TRY POSTTASK WITH CORRECT PARAMETERS ===
+console.log("Latest task:", latestTask[1]);
+const latestTask = await escrow.getTask(latestTaskId);
+const latestTaskId = newTaskCounter - 1n; // Since counter is total count
+console.log("New task counter:", newTaskCounter.toString());
+const newTaskCounter = await escrow.taskCounter();
+// === CHECK THE NEW TASK ===
+console.log("✅ Task created successfully!");
+await postTaskTx.wait();
+console.log("✅ Task posted TX:", postTaskTx.hash);
+const postTaskTx = await escrow.postTask(taskDetails, taskReward, taskDuration);
+const taskDuration = 7 * 24 * 60 * 60; // 7 days in seconds
+const taskReward = ethers.parseUnits("2.0", 6);
+const taskDetails = "Test Task from Console - This is a test task created via console";
+// === TRY POSTTASK WITH CORRECT PARAMETERS ===
+}
+  console.log("Task 3 does not exist");
+} else {
+  console.log("Task 3 exists:", checkTask3[1]);
+if (checkTask3) {
+const checkTask3 = await escrow.getTask(3).catch(() => null);
+}
+  console.log("Task 0 does not exist");
+} else {
+  console.log("Task 0 exists:", checkTask0[1]);
+if (checkTask0) {
+const checkTask0 = await escrow.getTask(0).catch(() => null);
+// === SIMPLE TASK EXISTENCE CHECK ===
+});
+  }
+    console.log("📋 Found postTask variant:", func);
+  if (func.includes('postTask')) {
+Object.keys(escrow.interface.functions).forEach(func => {
+// === CHECK ALL POSTTASK VARIATIONS ===
+});
+  console.log(`Parameter ${index}:`, input.name, input.type);
+postTaskFragment.inputs.forEach((input, index) => {
+console.log("postTask inputs:");
+// === CHECK THE EXACT PARAMETER TYPES ===
+console.log("Function fragment:", postTaskFragment);
+const postTaskFragment = escrow.interface.getFunction("postTask");
+console.log("postTask function info:");
+// === CHECK POSTTASK FUNCTION SIGNATURE ===
+}
+  }
+    console.log(`❌ Function not found: ${funcName}`);
+  } else {
+    console.log(`✅ Found function: ${funcName}`);
+  if (typeof escrow[funcName] === 'function') {
+for (const funcName of testFunctions) {
+const testFunctions = ["createTask", "postTask", "addTask", "newTask"];
+// Let's try common variations
+// === TRY TO FIND THE TASK CREATION FUNCTION ===
+}
+  console.log("Task 3 does not exist");
+} catch (error) {
+  console.log("Task 3 exists:", task3[1]);
+  const task3 = await escrow.getTask(3);
+try {
+}
+  console.log("Task 0 does not exist");
+} catch (error) {
+  console.log("Task 0 exists:", task0[1]);
+  const task0 = await escrow.getTask(0);
+try {
+// === CHECK EACH TASK INDIVIDUALLY ===
+console.log(Object.keys(escrow));
+console.log("All contract functions:");
+// === LIST ALL FUNCTIONS TO FIND THE RIGHT ONE ===
+}
+  }
+    console.log(`Task ${i} does not exist`);
+  } catch (error) {
+    console.log(`Task ${i} exists:`, task[1]);
+    const task = await escrow.getTask(i);
+  try {
+for (let i = 0; i <= 3; i++) {
+console.log("Checking which tasks exist:");
+// Let's check what tasks actually exist
+// This suggests task IDs might start from 0 or there's an indexing issue
+// === TASK COUNTER IS 3 BUT TASK 3 DOESN'T EXIST ===
+console.log("✅ Task created successfully!");
+await postTx.wait();
+console.log("✅ Task creation TX:", postTx.hash);
+);
+  futureDeadline
+  rewardAmount,
+  "This is a test task created via console",
+  "Test Task from Console",
+const postTx = await escrow.postTask(
+console.log("Deadline:", new Date(Number(newTask[3]) / 1000));
+console.log("Reward:", ethers.formatUnits(newTask[2], 6), "USDT");
+console.log("Title:", newTask[1]);
+console.log("New task details:");
+const newTask = await escrow.getTask(taskCounter);
+// === VIEW THE NEW TASK ===
+console.log("New task counter:", taskCounter.toString());
+const taskCounter = await escrow.taskCounter();
+// === CHECK THE NEW TASK ===
+console.log("✅ Task created successfully!");
+await createTx.wait();
+console.log("✅ Task creation TX:", createTx.hash);
+);
+  futureDeadline
+  rewardAmount,
+  "This is a test task created via console",
+  "Test Task from Console",
+const createTx = await escrow.postTask(
+// === TRY WITH POSTTASK FUNCTION ===
+});
+  }
+    console.log("📋", func);
+  if (func.toLowerCase().includes('task')) {
+Object.keys(escrow.interface.functions).forEach(func => {
+console.log("Available functions that contain 'task':");
+// === CHECK IF IT'S POSTTASK INSTEAD ===
+console.log("✅ Task created successfully!");
+await createTx.wait();
+console.log("✅ Task creation TX:", createTx.hash);
+);
+  futureDeadline
+  rewardAmount,
+  "This is a test task created via console",
+  "Test Task from Console",
+const createTx = await escrow.createTask(
+// === NOW TRY CREATING THE TASK ===
+console.log("New USDT allowance:", ethers.formatUnits(newAllowance, 6));
+const newAllowance = await usdt.allowance(signer.address, escrow.target);
+// === CHECK APPROVAL WORKED ===
+console.log("✅ USDT approved for task creation");
+await approveTx.wait();
+const approveTx = await usdt.approve(escrow.target, rewardAmount);
+// === FIRST APPROVE MORE USDT ===
+}
+  console.log("Error message:", error.message);
+  console.log("Error data:", error.data);
+  console.log("Error reason:", error.reason);
+  console.log("❌ Task creation failed:");
+} catch (error) {
+  console.log("✅ Task created successfully!");
+  await createTx.wait();
+  console.log("✅ Task creation TX:", createTx.hash);
+  );
+    futureDeadline
+    rewardAmount,
+    "This is a test task created via console",
+    "Test Task from Console",
+  const createTx = await escrow.createTask(
+try {
+}
+  console.log("✅ USDT approved");
+  await approveTx.wait();
+  const approveTx = await usdt.approve(escrow.target, rewardAmount);
+  console.log("Need to approve USDT...");
+if (allowance < rewardAmount) {
+console.log("Current USDT allowance:", ethers.formatUnits(allowance, 6));
+const allowance = await usdt.allowance(signer.address, escrow.target);
+// === CHECK IF YOU NEED TO APPROVE USDT FIRST ===
+console.log("Deadline date:", new Date(futureDeadline * 1000));
+console.log("Deadline timestamp:", futureDeadline);
+console.log("Reward amount:", rewardAmount.toString());
+const futureDeadline = Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60); // 7 days from now
+const rewardAmount = ethers.parseUnits("2.0", 6); // 2 USDT
+// === TEST CREATING A SIMPLE TASK ===
+console.log("Your USDT balance:", ethers.formatUnits(balance, 6));
+const balance = await usdt.balanceOf(signer.address);
+const [signer] = await ethers.getSigners();
+// === CHECK YOUR CURRENT USDT BALANCE ===
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+// === TEST TASK CREATION MANUALLY ===
+.exit
+console.log("Task 2 expired?", now > task2DeadlineSeconds);
+console.log("Task 1 expired?", now > task1DeadlineSeconds);
+console.log("Task 2 deadline (corrected):", new Date(task2DeadlineSeconds * 1000));
+console.log("Task 1 deadline (corrected):", new Date(task1DeadlineSeconds * 1000));
+const task2DeadlineSeconds = Math.floor(deadline2 / 1000);
+const task1DeadlineSeconds = Math.floor(deadline1 / 1000);
+// Check if tasks are actually expired when converted properly
+console.log("SelfAcceptance error might be the issue");
+console.log("Custom errors in contract:");
+// Check if it matches any of your custom errors
+console.log("Error signature:", errorData);
+const errorData = "0xc0343103";
+// Try a different approach - check the specific error
+console.log("Current timestamp:", now);
+console.log("Task 2 deadline in seconds:", deadline2);
+console.log("Task 1 deadline in seconds:", deadline1);
+// Let's see what these huge numbers are
+console.log("Task 2 raw deadline:", task2Info[3].toString());
+console.log("Task 1 raw deadline:", task1[3].toString());
+console.log("Task 2 expired?", now > deadline2);
+console.log("Task 2 deadline:", new Date(deadline2 * 1000));
+const deadline2 = Number(task2Info[3]);
+const task2Info = await escrow.getTask(2);
+console.log("Task expired?", now > deadline1);
+console.log("Current time:", new Date(now * 1000));
+console.log("Task 1 deadline:", new Date(deadline1 * 1000));
+const now = Math.floor(Date.now() / 1000);
+const deadline1 = Number(task1[3]);
+const task1 = await escrow.getTask(1);
+// Check task deadlines vs current time
+console.log("Contract paused?", await escrow.paused());
+// Check if contract is paused
+}
+  console.log("Full error:", error);
+  console.log("Error shortMessage:", error.shortMessage);
+  console.log("Error data:", error.data);
+  console.log("Static call failed:");
+} catch (error) {
+  console.log("Static call worked - this shouldn't happen");
+  await escrow.acceptTask.staticCall(1);
+try {
+// Let's see what happens when we try with staticCall
+// === CHECK IF ACCEPTTASK HAS ANY PREREQUISITES ===
+console.log("Testing other contract functions...");
+// Let's see if we can call other functions to understand requirements
+// The error data 0xc0343103 might be a custom error
+// === TRY TO DECODE THE ERROR ===
+}
+  console.log("Could not read interface");
+} catch (e) {
+  console.log("Contract interface:", escrow.interface);
+try {
+// === CHECK IF THERE ARE ANY CUSTOM ERRORS DEFINED ===
+});
+  }
+    console.log("acceptTask function found:", fragment);
+  if (fragment.type === 'function' && fragment.name === 'acceptTask') {
+  const fragment = escrow.interface.fragments[key];
+Object.keys(escrow.interface.fragments).forEach(key => {
+console.log("Contract interface fragments:");
+// === CHECK YOUR CONTRACT'S ABI TO SEE FUNCTION REQUIREMENTS ===
+}
+  console.log("Error message:", error.message);
+  console.log("Error data:", error.data);
+  console.log("Error reason:", error.reason);
+  console.log("❌ Error with different signer:");
+} catch (error) {
+  console.log("✅ Task accepted successfully!");
+  await tx.wait();
+  console.log("✅ SUCCESS! TX:", tx.hash);
+  const tx = await escrowWithDifferentSigner.acceptTask(1);
+try {
+// === TRY ACCEPTING WITH DIFFERENT SIGNER ===
+console.log("Switching to signer:", differentSigner.address);
+const differentSigner = signers[1]; // Use second signer if available
+// === SWITCH TO DIFFERENT SIGNER ===
+}
+  console.log(`Signer ${i}:`, signers[i].address);
+for (let i = 0; i < Math.min(signers.length, 3); i++) {
+console.log("Available signers:");
+const signers = await ethers.getSigners();
+// === GET ALL AVAILABLE SIGNERS ===
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+// === CONNECT TO CONTRACTS ===
+.exit
+const acceptTx = await escrow.acceptTask(2);
+// Try accepting the task (without try-catch for now)
+console.log("Same person?", signer.address.toLowerCase() === taskInfo[4].toLowerCase());
+console.log("Task creator:", taskInfo[4]);
+console.log("Your address:", signer.address);
+// Check if you're the creator
+console.log("Status:", taskInfo[7].toString());
+console.log("Worker:", taskInfo[5]);
+console.log("Creator:", taskInfo[4]);
+console.log("Title:", taskInfo[1]);
+console.log("ID:", taskInfo[0].toString());
+console.log("Task 2 details:");
+const taskInfo = await escrow.getTask(2);
+// Use a different variable name
+}
+  console.log("Error data:", error.data);
+  console.log("Error details:", error.reason || error.message);
+} catch (error) {
+  console.log("Success! TX:", tx.hash);
+  const tx = await escrow.acceptTask(2);
+try {
+// === TRY TO ACCEPT THE TASK DIRECTLY ===
+console.log("Same person?", signer.address.toLowerCase() === taskTwo[4].toLowerCase());
+console.log("Task creator:", taskTwo[4]);
+console.log("Your address:", signer.address);
+// === CHECK IF YOU'RE TRYING TO ACCEPT YOUR OWN TASK ===
+console.log("Status:", task2[7].toString());
+console.log("Worker:", task2[5]);
+console.log("Creator:", task2[4]); 
+console.log("Title:", task2[1]);
+console.log("ID:", task2[0].toString());
+console.log("Task 2 details:");
+const task2 = await escrow.getTask(2);
+// === NOW CHECK TASK 2 ===
+console.log("Your address:", signer.address);
+const [signer] = await ethers.getSigners();
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+// === RECONNECT TO CONTRACTS ===
+console.log("Status:", task2[7].toString());
+console.log("Worker:", task2[5]);
+console.log("Creator:", task2[4]); 
+console.log("Title:", task2[1]);
+console.log("ID:", task2[0].toString());
+console.log("Task 2 details:");
+const task2 = await escrow.getTask(2);
+// Check the specific task you're trying to accept
+console.log("📅 Created:", new Date(Number(task3[8])).toLocaleString());
+console.log("📊 Status:", task3[7].toString());
+console.log("📄 Description:", task3[6] || "(No description)");
+console.log("🔨 Worker:", task3[5]);
+console.log("👤 Creator:", task3[4]);
+console.log("⏰ Deadline:", new Date(Number(task3[3])).toLocaleString());
+console.log("💰 Reward:", ethers.formatUnits(task3[2], 6), "USDT");
+console.log("🏷️ Title:", task3[1]);
+console.log("📝 Task ID:", task3[0].toString());
+console.log("\n--- TASK 3 ---");
+const task3 = await escrow.getTask(3);
+console.log("📅 Created:", new Date(Number(task3[8])).toLocaleString());
+console.log("📊 Status:", task3[7].toString());
+console.log("📄 Description:", task3[6] || "(No description)");
+console.log("🔨 Worker:", task3[5]);
+console.log("👤 Creator:", task3[4]);
+console.log("⏰ Deadline:", new Date(Number(task3[3])).toLocaleString());
+console.log("💰 Reward:", ethers.formatUnits(task3[2], 6), "USDT");
+console.log("🏷️ Title:", task3[1]);
+console.log("📝 Task ID:", task3[0].toString());
+console.log("\n--- TASK 3 ---");
+const task3 = await escrow.getTask(3);
+console.log("📅 Created:", new Date(Number(task2[8])).toLocaleString());
+console.log("📊 Status:", task2[7].toString());
+console.log("📄 Description:", task2[6] || "(No description)");
+console.log("🔨 Worker:", task2[5]);
+console.log("👤 Creator:", task2[4]);
+console.log("⏰ Deadline:", new Date(Number(task2[3])).toLocaleString());
+console.log("💰 Reward:", ethers.formatUnits(task2[2], 6), "USDT");
+console.log("🏷️ Title:", task2[1]);
+console.log("📝 Task ID:", task2[0].toString());
+console.log("\n--- TASK 2 ---");
+const task2 = await escrow.getTask(2);
+// === GET TASK 2 ===
+console.log("📅 Created:", new Date(Number(task1[8])).toLocaleString());
+console.log("📊 Status:", task1[7].toString());
+console.log("📄 Description:", task1[6] || "(No description)");
+console.log("🔨 Worker:", task1[5]);
+console.log("👤 Creator:", task1[4]);
+console.log("⏰ Deadline:", new Date(Number(task1[3])).toLocaleString());
+console.log("💰 Reward:", ethers.formatUnits(task1[2], 6), "USDT");
+console.log("🏷️ Title:", task1[1]);
+console.log("📝 Task ID:", task1[0].toString());
+console.log("--- TASK 1 ---");
+const task1 = await escrow.getTask(1);
+await testFunctions();
+};
+  }
+    }
+      console.log("✅ acceptTask function exists (error was:", error.reason || error.message, ")");
+    } else {
+      console.log("❌ acceptTask function not available");
+    if (error.message.includes("function")) {
+  } catch (error) {
+    console.log("✅ acceptTask function exists");
+    await escrow.acceptTask.staticCall(1);
+  try {
+  // Test acceptTask
+  }
+    }
+      console.log("✅ createTask function exists (error was:", error.reason || error.message, ")");
+    } else {
+      console.log("❌ createTask function not available");
+    if (error.message.includes("function")) {
+  } catch (error) {
+    console.log("✅ createTask function exists and works");
+    await escrow.createTask.staticCall("Test", "Description", ethers.parseUnits("1", 6), Math.floor(Date.now() / 1000) + 86400);
+  try {
+  // Test createTask (just check if it exists, don't actually create)
+const testFunctions = async () => {
+// Test if common functions work
+console.log("\n=== TESTING COMMON FUNCTIONS ===");
+console.log("💰 USDT Spent on Tasks:", ethers.formatUnits(spent, 6));
+console.log("💰 Your Current Balance:", ethers.formatUnits(currentBalance, 6));
+console.log("💰 Total USDT Supply:", ethers.formatUnits(totalSupply, 6));
+const spent = totalSupply - currentBalance;
+const totalSupply = await usdt.totalSupply();
+const currentBalance = await usdt.balanceOf(signer.address);
+console.log("\n=== USDT USAGE SUMMARY ===");
+// Let's also check what USDT has been spent
+}
+  }
+    console.log(`❌ Error getting task ${i}:`, error.message);
+  } catch (error) {
+    console.log("📅 Created:", new Date(Number(task[8])).toLocaleString());
+    console.log("📊 Status:", task[7].toString());
+    console.log("📄 Description:", task[6] || "(No description)");
+    console.log("🔨 Worker:", task[5]);
+    console.log("👤 Creator:", task[4]);
+    console.log("⏰ Deadline:", new Date(Number(task[3])).toLocaleString());
+    console.log("💰 Reward:", ethers.formatUnits(task[2], 6), "USDT");
+    console.log("🏷️  Title:", task[1]);
+    console.log("📝 Task ID:", task[0].toString());
+    // Parse the task data (based on the structure we saw)
+    console.log("Raw task data:", task);
+    const task = await escrow.getTask(i);
+  try {
+  console.log(`\n--- TASK ${i} ---`);
+for (let i = 1; i <= 3; i++) {
+// You have 3 tasks, let's get all of them
+console.log("=== YOUR REAL BLOCKCHAIN TASKS ===");
+// Run these commands to see your actual tasks
+// === GET ALL YOUR REAL BLOCKCHAIN TASKS ===
+});
+  console.log("📋", func);
+Object.keys(escrow.interface.functions).forEach(func => {
+console.log("\n=== ALL AVAILABLE FUNCTIONS ===");
+}
+  }
+    }
+      console.log(`❌ ${func} function not found`);
+    } else {
+      console.log(`✅ ${func} variations found:`, variations);
+    if (variations.length > 0) {
+    const variations = Object.keys(escrow.interface.functions).filter(f => f.includes(func));
+    // Check for variations
+  } else {
+    console.log(`✅ ${func} function exists`);
+  if (escrow.interface.functions[func + '(']) {
+for (const func of functions) {
+];
+  'getAvailableTasks'
+  'getTasksByCreator',
+  'getTask',
+  'tasks',
+  'disputeTask',
+  'releasePayment',
+  'approveTask',
+  'submitTask',
+  'acceptTask', 
+  'createTask',
+const functions = [
+// Try common function names
+console.log("\n=== CHECKING ESCROW FUNCTIONS ===");
+// Check for common escrow functions
+console.log("Available functions:", Object.keys(escrow.interface.functions));
+console.log("Escrow contract interface:");
+// See what parameters createTask needs (this will show the function signature)
+console.log("\n=== CHECKING TASK CREATION ===");
+// Check if there's a way to create tasks
+}
+  console.log("✅ getTask(1) details:", taskDetails);
+if (taskDetails !== undefined) {
+const taskDetails = await escrow.getTask(1).catch(e => console.log("❌ getTask function not available:", e.reason));
+// Try to get task by different method
+}
+  console.log("✅ Task 1 details:", task1);
+if (task1 !== undefined) {
+const task1 = await escrow.tasks(1).catch(e => console.log("❌ tasks mapping not available:", e.reason));
+// Try to get details of task #1
+console.log("=== CHECKING TASK FUNCTIONS ===");
+// Check if you can get task details
+// Run these commands in Hardhat console to see what your contract can do
+// === DISCOVER YOUR CONTRACT'S FUNCTIONS ===
+console.log("🎉 All checks completed! Your contracts are properly deployed and accessible.");
+console.log("\n=== VERIFICATION COMPLETE ===");
+}
+  console.log("✅ USDT addresses match:", usdtAddress.toLowerCase() === usdt.target.toLowerCase());
+  console.log("✅ USDT Token Address in contract:", usdtAddress);
+if (usdtAddress !== undefined) {
+const usdtAddress = await escrow.usdtToken().catch(e => console.log("❌ usdtToken not available:", e.reason));
+// Check if USDT is set as payment token
+}
+  console.log("✅ Total tasks created:", taskCount.toString());
+if (taskCount !== undefined) {
+const taskCount = await escrow.taskCounter().catch(e => console.log("❌ taskCounter not available:", e.reason));
+// Try to get task count
+console.log("\n=== ADDITIONAL CONTRACT CHECKS ===");
+// === STEP 7: Check other contract functions ===
+}
+  console.log("✅ Is owner your address?", owner.toLowerCase() === signer.address.toLowerCase());
+  console.log("✅ Contract Owner:", owner);
+if (owner !== undefined) {
+const owner = await escrow.owner().catch(e => console.log("❌ owner not available:", e.reason));
+// Check owner function
+const platformFee = await escrow.platformFee().catch(e => console.log("❌ platformFee not available:", e.reason));
+// Check if platformFee function exists
+console.log("\n=== ESCROW CONTRACT VERIFICATION ===");
+// === STEP 6: Check escrow contract functions ===
+console.log("Your USDT balance:", ethers.formatUnits(balance, 6), "USDT");
+const balance = await usdt.balanceOf(signer.address);
+console.log("USDT Total Supply:", ethers.formatUnits(totalSupply, 6));
+const totalSupply = await usdt.totalSupply();
+console.log("USDT Total Supply:", ethers.formatUnits(totalSupply, 6));
+console.log("USDT Decimals:", await usdt.decimals());
+console.log("USDT Symbol:", await usdt.symbol());
+console.log("USDT Name:", await usdt.name());
+console.log("\n=== USDT CONTRACT VERIFICATION ===");
+// === STEP 4: Verify USDT contract ===
+console.log("Network:", network.name, "Chain ID:", network.chainId.toString());
+const network = await ethers.provider.getNetwork();
+// === STEP 3: Check network ===
+console.log("Your address:", signer.address);
+const [signer] = await ethers.getSigners();
+// === STEP 2: Get signer ===
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+// === STEP 1: Connect to contracts ===
+... console.log("✅ Task created successfully!");
+... await tx.wait();
+... console.log("✅ Task creation transaction sent:", tx.hash);
+... );
+...   Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60) // 7 days from now
+...   taskReward,
+...   "This is a test task description",
+...   "Test Task",
+... const tx = await escrow.createTask(
+... const taskReward = ethers.parseUnits("50", 6); // 50 USDT
+... // Create a test task
+...
+... console.log("✅ Approved USDT spending");
+... await usdt.approve(escrow.target, approveAmount);
+... const approveAmount = ethers.parseUnits("100", 6); // 100 USDT
+... // First approve USDT spending
+... console.log("\n=== TESTING TASK CREATION ===");
+*/
+console.log("✅ Task created successfully!");
+await tx.wait();
+console.log("✅ Task creation transaction sent:", tx.hash);
+);
+  Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60) // 7 days from now
+  taskReward,
+  "This is a test task description",
+  "Test Task",
+const tx = await escrow.createTask(
+const taskReward = ethers.parseUnits("50", 6); // 50 USDT
+// Create a test task
+console.log("✅ Approved USDT spending");
+await usdt.approve(escrow.target, approveAmount);
+const approveAmount = ethers.parseUnits("100", 6); // 100 USDT
+// First approve USDT spending
+console.log("\n=== TESTING TASK CREATION ===");
+/*
+// === OPTIONAL: Test creating a task (uncomment if you want to test) ===
+console.log("🎉 All checks completed! Your contracts are properly deployed and accessible.");
+console.log("\n=== VERIFICATION COMPLETE ===");
+}
+  console.log("✅ USDT addresses match:", usdtAddress.toLowerCase() === usdt.target.toLowerCase());
+  console.log("✅ USDT Token Address in contract:", usdtAddress);
+if (usdtAddress !== undefined) {
+const usdtAddress = await escrow.usdtToken().catch(e => console.log("❌ usdtToken not available:", e.reason));
+// Check if USDT is set as payment token
+}
+  console.log("✅ Total tasks created:", taskCount.toString());
+if (taskCount !== undefined) {
+const taskCount = await escrow.taskCounter().catch(e => console.log("❌ taskCounter not available:", e.reason));
+// Try to get task count
+console.log("\n=== ADDITIONAL CONTRACT CHECKS ===");
+// === STEP 7: Check other contract functions ===
+}
+  console.log("✅ Is owner your address?", owner.toLowerCase() === signer.address.toLowerCase());
+  console.log("✅ Contract Owner:", owner);
+if (owner !== undefined) {
+const owner = await escrow.owner().catch(e => console.log("❌ owner not available:", e.reason));
+// Check owner function
+}
+  console.log("✅ Platform Fee (percentage):", (Number(platformFee) / 100).toFixed(2) + "%");
+  console.log("✅ Platform Fee (basis points):", platformFee.toString());
+if (platformFee !== undefined) {
+const platformFee = await escrow.platformFee().catch(e => console.log("❌ platformFee not available:", e.reason));
+// Check if platformFee function exists
+console.log("\n=== ESCROW CONTRACT VERIFICATION ===");
+// === STEP 6: Check escrow contract functions (one by one) ===
+console.log("Your USDT balance:", ethers.formatUnits(balance, 6), "USDT");
+const balance = await usdt.balanceOf(signer.address);
+// === STEP 5: Check your USDT balance ===
+console.log("USDT Total Supply:", ethers.formatUnits(totalSupply, 6));
+const totalSupply = await usdt.totalSupply();
+console.log("USDT Decimals:", await usdt.decimals());
+console.log("USDT Symbol:", await usdt.symbol());
+console.log("USDT Name:", await usdt.name());
+console.log("\n=== USDT CONTRACT VERIFICATION ===");
+// === STEP 4: Verify USDT contract ===
+console.log("Network:", network.name, "Chain ID:", network.chainId.toString());
+const network = await ethers.provider.getNetwork();
+// === STEP 3: Check network ===
+console.log("Your address:", signer.address);
+const [signer] = await ethers.getSigners();
+// === STEP 2: Get signer ===
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+// === STEP 1: Connect to contracts ===
+// Copy and paste these commands one by one into the Hardhat console
+// Contract Verification Script for Hardhat Console
+}
+  console.log("❌ owner function not available:", error.message);
+} catch (error) {
+  console.log("Is owner your address?", owner.toLowerCase() === "0x8ee10e6948f342cb0f54d3ff25e2b3980c823659");
+  console.log("Fee Recipient (Owner):", owner);
+  const owner = await escrow.owner();
+try {
+// Check fee recipient (should be contract owner)
+}
+  console.log("❌ platformFee function not available:", error.message);
+} catch (error) {
+  console.log("Platform Fee (percentage):", (Number(platformFee) / 100).toFixed(2) + "%");
+  console.log("Platform Fee (basis points):", platformFee.toString());
+  const platformFee = await escrow.platformFee();
+try {
+// Check if you have a platformFee function
+console.log("=== PLATFORM FEE VERIFICATION ===");
+// Check platform fee configuration
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+// Connect to your contract
+.exit
+console.log("Current block:", await ethers.provider.getBlockNumber());
+console.log("Chain ID:", network.chainId.toString());
+console.log("Network Name:", network.name);
+const network = await ethers.provider.getNetwork();
+console.log("Console balance:", ethers.formatUnits(balance, 6), "USDT");
+const balance = await usdt.balanceOf(signer.address);
+console.log("Signer address:", signer.address);
+const [signer] = await ethers.getSigners();
+// Check your balance
+console.log("USDT Total Supply:", ethers.formatUnits(await usdt.totalSupply(), 6));
+console.log("USDT Decimals:", await usdt.decimals());
+console.log("USDT Symbol:", await usdt.symbol());
+console.log("USDT Name:", await usdt.name());
+// Test basic contract reads
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+// Check if contracts exist and are accessible
+.exit
+const balance = await usdt.balanceOf
+console.log("Your USDT balance:", ethers.formatUnits(balance, 6), "USDT");
+const balance = await usdt.balanceOf("0x8ee10e6948F342Cb0f54d3ff25E2b3980C823659");
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+export default App;
+}
+  );
+    </div>
+      )}
+        </div>
+          </div>
+            </div>
+              <p>💰 <strong>Platform Fee:</strong> Only 2.5% on completion</p>
+              <p>✅ <strong>Get Paid:</strong> Automatic payment on approval</p>
+              <p>📤 <strong>Submit Work:</strong> Provide proof of completion</p>
+              <p>✋ <strong>Accept Tasks:</strong> Claim available work</p>
+              <p>📝 <strong>Post Tasks:</strong> Lock USDT in secure escrow</p>
+            <div style={{ textAlign: 'left', display: 'inline-block' }}>
+            <h3>🎯 How it works:</h3>
+          <div style={{ marginTop: '30px', fontSize: '14px', color: '#666' }}>
+          <p><strong>Connect your wallet to start posting or accepting tasks.</strong></p>
+          <p>The first gasless freelance platform on Plasma testnet!</p>
+          <h2>🌟 Welcome to PlasmaTasks</h2>
+        <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+      ) : (
+        </div>
+          <TaskList />
+          <PostTaskForm />
+        <div>
+      {isConnected ? (
+      {/* Show platform only when connected */}
+      </div>
+        <w3m-button />
+        <p><strong>Status:</strong> {isConnected ? `✅ Connected: ${address?.slice(0,6)}...${address?.slice(-4)}` : '❌ Not Connected'}</p>
+      <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
+      {/* Connection Status */}
+      <h1>🚀 PlasmaTasks - Decentralized Freelance Platform</h1>
+    <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+  return (
+  const { address, isConnected } = useAccount();
+function App() {
+import TaskList from './components/TaskList';
+import PostTaskForm from './components/PostTaskForm';
+import { useAccount } from 'wagmi';
+import React from 'react';
+console.log("Owner USDT balance:", ethers.formatUnits(ownerBalance, 6), "USDT");
+const ownerBalance = await usdt.balanceOf(await escrow.owner());
+// Check if withdrawal went to owner instead
+console.log("Total USDT supply:", ethers.formatUnits(totalSupply, 6), "USDT");
+const totalSupply = await usdt.totalSupply();
+// Check total USDT supply to see if tokens disappeared
+console.log("Pending after withdrawal:", ethers.formatUnits(pendingAfter, 6), "USDT");
+const pendingAfter = await escrow.pendingWithdrawals(account1.address);
+// Check pending after withdrawal - should be 0
+}
+  console.log("Final escrow balance:", ethers.formatUnits(finalEscrow, 6), "USDT");
+  console.log("Final your balance:", ethers.formatUnits(finalBalance, 6), "USDT");
+  const finalEscrow = await usdt.balanceOf(await escrow.getAddress());
+  const finalBalance = await usdt.balanceOf(account1.address);
+  // Check balances after withdrawal
+  console.log("✅ Withdrawal completed");
+  await escrow.withdraw();
+if (pendingWithdrawal > 0) {
+// If pending > 0, try withdrawing
+console.log("Pending withdrawal:", ethers.formatUnits(pendingWithdrawal, 6), "USDT");
+const pendingWithdrawal = await escrow.pendingWithdrawals(account1.address);
+console.log("Escrow USDT after cancellation:", ethers.formatUnits(escrowAfter, 6), "USDT");
+const escrowAfter = await usdt.balanceOf(await escrow.getAddress());
+// Check escrow balance
+console.log("Your USDT after cancellation:", ethers.formatUnits(yourBalanceAfter, 6), "USDT");
+const yourBalanceAfter = await usdt.balanceOf(account1.address);
+// Check if USDT was returned
+console.log("Status after cancellation:", cancelledTask.status.toString());
+const cancelledTask = await escrow.getTask(0);
+// Check if task was cancelled
+await escrow.cancelTask(0);
+// Test cancellation
+const activeTasks = await escrow.getAllActiveTasks();
+console.log("USDT in escrow:", ethers.formatUnits(escrowBalance, 6), "USDT");
+const escrowBalance = await usdt.balanceOf(await escrow.getAddress());
+console.log("Task status:", updatedTask.status.toString());
+const updatedTask = await escrow.getTask(0);
+console.log("Active tasks count:", activeTasks.length);
+const activeTasks = await escrow.getAllActiveTasks();
+console.log("Active tasks count:", activeTasks.length);
+console.log("Freelancer:", updatedTask.freelancer, "(should be zero address)");
+console.log("Task status still:", updatedTask.status.toString(), "(should still be 0)");
+const updatedTask = await escrow.getTask(0);
+await escrow.connect(account1).acceptTask(0);
+// Test accepting the task directly
+}
+  console.log("Error message:", error.message);
+  console.log("❌ Task acceptance failed (expected - can't accept your own task)");
+} catch (error) {
+  console.log("✅ Task accepted (unexpected - you're the poster!)");
+  await escrow.connect(account1).acceptTask(taskId);
+try {
+console.log("🔄 Testing task acceptance...");
+console.log("- Submission:", task.submission || "None");
+console.log("- Deadline:", new Date(Number(task.deadline) * 1000).toLocaleString());
+console.log("- Freelancer:", task.freelancer);
+console.log("- Poster:", task.poster);
+console.log("- Status:", task.status.toString(), "(0=Open, 1=Accepted, 2=Submitted, 3=Completed)");
+console.log("- Reward:", ethers.formatUnits(task.reward, 6), "USDT");
+console.log("- Details:", task.details);
+console.log("- ID:", task.id.toString());
+console.log("📋 DETAILED TASK ANALYSIS:");
+const task = await escrow.getTask(taskId);
+const taskId = 0;
+}
+  }
+    });
+      poster: task.poster
+      status: task.status.toString(),
+      reward: ethers.formatUnits(task.reward, 6) + " USDT",
+      details: task.details,
+    console.log(`Task ${i}:`, {
+    const task = await escrow.getTask(i);
+  for (let i = 0; i < currentTaskCounter; i++) {
+if (currentTaskCounter > 0) {
+// If we have tasks, let's examine them
+console.log("Current task counter:", currentTaskCounter.toString());
+const currentTaskCounter = await escrow.taskCounter();
+console.log("XPL Balance:", ethers.formatEther(xplBalance1), "XPL");
+const xplBalance1 = await ethers.provider.getBalance(account1.address);
+// Check XPL balance for gas
+console.log("USDT Balance:", ethers.formatUnits(balance1, 6), "USDT");
+const balance1 = await usdt.balanceOf(account1.address);
+// Check USDT balance
+console.log("Testing with single account:", account1.address);
+// Continue with single account testing
+console.log("Account 2 (Freelancer):", account2.address);
+console.log("Account 1 (Poster):", account1.address);
+const [account1, account2] = await ethers.getSigners();
+// Get accounts
+console.log("✅ Basic contract reads working");
+console.log("- Platform Fee:", platformFee.toString(), "basis points (250 = 2.5%)");
+console.log("- USDT Address:", usdtAddr);
+console.log("- Owner:", owner);
+console.log("Contract Details:");
+const platformFee = await escrow.platformFee();
+const usdtAddr = await escrow.usdt();
+const owner = await escrow.owner();
+// Test basic reads
+console.log("✅ Contracts connected");
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");
+// Connect to contracts
+console.log("Active tasks count:", activeTasks.length);
+const activeTasks = await escrow.getAllActiveTasks();
+// Check active tasks
+console.log("- Poster:", currentTask.poster);nsole.log("- Freelancer:", currentTask.freelancer);thers.getSigners();
+// Get current signer
+const usdt = await ethers.getContractAt("MockUSDT", "0xe86E7fFb5A8f7C4506487FFcF924E164263BE157");
+const escrow = await ethers.getContractAt("StandaloneSecureEscrow", "0xf6a5C743d21277291938e28a618f7E43DEA6262C");/ Connect to contractswithdraw();row.pendingWithdrawals(poster.address);
+const freelancerPending = await escrow.pendingWithdrawals(freelancer.address);
+// Check pending withdrawals
+console.log("📋 Final Task Status:", completedTask.status.toString(), "(should be 3 = Completed)");

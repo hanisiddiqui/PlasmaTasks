@@ -1,30 +1,22 @@
 const hre = require("hardhat");
 
 async function main() {
-  const USDT_ADDRESS = process.env.USDT_ADDRESS || "0x0000000000000000000000000000000000000000"; // placeholder
+  const usdtAddress = process.env.USDT_ADDRESS;
 
-  const PlasmaTaskEscrow = await hre.ethers.getContractFactory("PlasmaTaskEscrow");
-  const escrow = await PlasmaTaskEscrow.deploy(USDT_ADDRESS);
-  await escrow.deployed();
-  console.log("PlasmaTaskEscrow deployed to:", escrow.address);
+  if (!usdtAddress) {
+    console.error("❌ Missing USDT_ADDRESS in .env");
+    process.exit(1);
+  }
 
-  const InstantGigs = await hre.ethers.getContractFactory("InstantGigs");
-  const gigs = await InstantGigs.deploy(USDT_ADDRESS);
-  await gigs.deployed();
-  console.log("InstantGigs deployed to:", gigs.address);
+  const Escrow = await hre.ethers.getContractFactory("Escrow");
+  const escrow = await Escrow.deploy(usdtAddress);
 
-  const DisputeLogic = await hre.ethers.getContractFactory("DisputeLogic");
-  const disputes = await DisputeLogic.deploy();
-  await disputes.deployed();
-  console.log("DisputeLogic deployed to:", disputes.address);
+  await escrow.waitForDeployment();
 
-  const ReviewAndProofs = await hre.ethers.getContractFactory("ReviewAndProofs");
-  const reviews = await ReviewAndProofs.deploy();
-  await reviews.deployed();
-  console.log("ReviewAndProofs deployed to:", reviews.address);
+  console.log("✅ Escrow deployed to:", await escrow.getAddress());
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error("❌ Deployment failed:", error);
   process.exitCode = 1;
 });
